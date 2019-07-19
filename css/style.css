@@ -1,0 +1,110 @@
+/* Stylesheet */
+.iti__flag {
+    background-image: url("../images/flags.png");
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    .iti__flag {
+        background-image: url("../images/flags@2x.png");
+    }
+}
+
+.iti {
+    width: 100%;
+}
+
+.boogaloo {
+    font-family: 'Boogaloo',
+        cursive;
+}
+
+.roboto {
+    font-family: 'Roboto Condensed',
+        sans-serif;
+}
+
+.slabo {
+    font-family: 'Slabo 27px',
+        serif;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.top-margin {
+    margin-top: 40px;
+}
+
+.bottom-margin {
+    margin-bottom: 40px;
+}
+
+.container {
+    max-width: 90%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+#form {
+    border-style: solid;
+    border-color: rgb(180, 180, 180);
+    border-radius: 15px;
+    border-width: 0px;
+    padding: 40px 20px 20px 20px;
+    box-shadow: 0px 0px 10px 0.5px rgba(238, 238, 238, 0);
+    background-color: #eeeeee;
+    z-index: 1;
+}
+
+.linkedin {
+    background-color: #0077B5;
+    color: #fff;
+}
+
+.twitter {
+    background-color: #55acee;
+    color: #fff;
+}
+
+.instagram {
+    background-color: #e4405f;
+    color: #fff;
+}
+
+.facebook {
+    background-color: #3b5999;
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: #ce1e39;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #0064ab;
+    color: #fff;
+}
+
+#particles-js canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* z-index: -1; */
+}
+
+#firstName {
+    text-transform: capitalize;
+}
+
+#lastName {
+    text-transform: capitalize;
+}
+
+#email {
+    text-transform: lowercase;
+}
