@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', e => {
                 'warning'
               )
               setTimeout(() => {
-                window.location = 'https://businessitygroup.com/ads-workshop'
+                window.location = 'https://businessitygroup.com'
               }, 3000)
             } else if (data === 'success') {
               swal(
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', e => {
                 'success'
               )
               setTimeout(() => {
-                window.location = 'https://businessitygroup.com/ads-workshop'
+                window.location = 'https://businessitygroup.com'
               }, 3000)
             }
         })
