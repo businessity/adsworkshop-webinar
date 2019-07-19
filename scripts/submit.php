@@ -10,8 +10,8 @@
  * @license  GPL https://opensource.org/licenses/gpl-license
  * @link     https://stbensonimoh.com
  */
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 // echo json_encode($_POST);
 
 // Pull in the required files
@@ -44,41 +44,43 @@ $notify = new Notify($smstoken, $emailHost, $emailUsername, $emailPassword, $SMT
 $newsletter = new Newsletter($apiUserId, $apiSecret);
 
 // First check to see if the user is in the Database
-if ($db->userExists($email, "iys_participation")) {
+if ($db->userExists($email, "bgwebinar")) {
     echo json_encode("user_exists");
 } else {
     // Insert the user into the database
     $db->getConnection()->beginTransaction();
-    $db->insertUser("iys_participation", $details);
-        // Send SMS
-        $notify->viaSMS("YouthSummit", "Dear {$firstName} {$lastName}, thank you for registering to be a part of AWLO Youth Summit in commemoration of the International Youth Day. We look forward to receiving you. Kindly check your mail for more details. Thank you.", $phone);
+    $db->insertUser("bgwebinar", $details);
+    // Send SMS
+    $notify->viaSMS(
+            "Businessity",
+            "Dear {$name}, you're in! kindly check your email for more details. See you soon.
+        - Businessity Team",
+            $phone
+    );
 
-        /**
-         * Add User to the SendPulse Mail List
-         */
-        $emails = array(
+    /**
+     * Add User to the SendPulse Mail List
+     */
+    $emails = array(
             array(
-                'email'             => $email,
-                'variables'         => array(
-                    'name'          => $firstName,
-                    'middleName'    => $middleName,
-                    'lastName'      => $lastName,
-                    'phone'         => $phone,
-                    'gender'        => $gender,
-                    'city'          => $city
+                'email'                            => $email,
+                'variables'                        => array(
+                    'name'                         => $name,
+                    'phone'                        => $phone,
+                    'businessName'                 => $businessName,
+                    'businessDescription'          => $businessDescription
                 )
             )
         );
 
-        $newsletter->insertIntoList("2414419", $emails);
+    $newsletter->insertIntoList("239101", $emails);
 
-        $name = $firstName . ' ' . $lastName;
-        // Send Email
-        require './emails.php';
-        // Send Email
-        $notify->viaEmail("youthsummit@awlo.org", "AWLO Youth Summit", $email, $name, $emailBody, "AWLO International Youth Summit");
+    // Send Email
+    require './emails.php';
+    // Send Email
+    $notify->viaEmail("info@businessitygroup.com", "Businessity", $email, $name, $emailBody, "You're in {$name}! Can we make a deal?");
 
-        $db->getConnection()->commit();
+    $db->getConnection()->commit();
 
-        echo json_encode("success");
+    echo json_encode("success");
 }

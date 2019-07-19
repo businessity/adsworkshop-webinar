@@ -66,26 +66,26 @@ document.addEventListener('DOMContentLoaded', e => {
           return response.json()
         })
         .then(data => {
-          console.log(data)
-          //   if (data === 'user_exists') {
-          //     swal(
-          //       'Already Asked a Question',
-          //       'You have already asked a question.',
-          //       'warning'
-          //     )
-          //     setTimeout(() => {
-          //       window.location = 'https://businessitygroup.com/ads-workshop'
-          //     }, 3000)
-          //   } else {
-          //     swal(
-          //       'Question Submitted Successfully',
-          //       'Your question has been received.',
-          //       'success'
-          //     )
-          //     setTimeout(() => {
-          //       window.location = 'https://businessitygroup.com/ads-workshop'
-          //     }, 3000)
-          //   }
+        //   console.log(data)
+            if (data === 'user_exists') {
+              swal(
+                'Already Registered',
+                'You have already registered for the webinar.',
+                'warning'
+              )
+              setTimeout(() => {
+                window.location = 'https://businessitygroup.com/ads-workshop'
+              }, 3000)
+            } else if (data === 'success') {
+              swal(
+                'Registration Successful!',
+                'Your registration was successful.',
+                'success'
+              )
+              setTimeout(() => {
+                window.location = 'https://businessitygroup.com/ads-workshop'
+              }, 3000)
+            }
         })
         .catch(error => {
           console.log('The Request has Failed', error)
